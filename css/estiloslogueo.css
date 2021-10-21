@@ -1,0 +1,172 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#contenedor{
+	
+	font-family: 'Vollkorn', serif;
+	width: 100%;
+	height: 100vh;
+	background:  #fb846c;
+}
+#contenido{
+	background-image: url(../img/bus1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 10px;
+	width: 82%;
+	height: 80%;
+	margin-left: 9%;
+}
+#Caja_Formulario{
+
+	border-radius: 10px;
+	border: 5px none solid;
+	color: #000;
+	width: 25%;
+	height: 300px;
+	/*margin: auto;*/
+	position: absolute;
+	top: 20%;
+	left: 37%;
+	background: #e7f5f0;
+}
+h1{
+	color:  #000;
+}
+
+form{
+	text-align: center;
+	margin-top: 50px;
+}
+
+input[placeholder="Escriba su usuario"],[placeholder="Escriba su contraseña"]{
+	text-align: center;
+}
+
+input{
+	border: 0px;
+	border-radius: 15px;
+	height: 30px;
+	margin: 3px;
+}
+
+select:hover{
+	border: none;
+}
+
+select, option{
+	border: none;
+	width: 170px;
+	height: 30px;
+	border-radius: 5px;
+	background: #d63031;
+	color: #fff;
+	text-align: center;
+}
+
+#boton1{
+	font-family: 'Vollkorn', serif;
+	font-size: 16px;
+	width: 52%;
+	background: #d63031;
+	color: #fff;
+}
+
+#boton2{
+	margin-top: 10px;
+	background:  #d63031;
+	width: 48%;
+	margin-left: 24%;
+	border-radius: 15px;
+	height: 20px;
+	padding: 5px;
+}
+
+a{
+	text-decoration: none;
+	color: #fff;
+	text-align: center;
+	margin: 10px;
+}
+
+#footer{
+	text-align: center;
+	width: 80%;
+	height: 20%;
+	margin-top: 2px;
+	border-radius: 10px;
+	background: #d63031;
+	color: #fff;
+	padding: 1%;
+}
+.ima {
+	border: 0.5px black solid;
+	border-radius: 10px;
+} 
+
+/*-------------------------------------------------Parte Responsive--------------------------------------------*/
+
+
+
+
+@media only screen and (max-width: 1024px){
+	#contenedor{
+		font-family: 'Vollkorn', serif;
+		width: 100%;
+		height: 100vh;
+		
+	}
+	#contenido{
+		background-image: url(../img/bus1.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-radius: 10px;
+		width: 100%;
+		height: 80%;
+		margin-left: -0px;
+	}
+	#Caja_Formulario{
+		border-radius: 10px;
+		border: 5px #000 solid;
+		color: #000;
+		width: 65%;
+		height: 50%;
+		margin: auto;
+		position: relative;
+		top: 20%;
+		background:  #e7f5f0;
+	}
+
+	form{
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	input[placeholder="Escriba su usuario"],[placeholder="Escriba su contraseña"]{
+		text-align: center;
+	}
+
+	input{
+		border: 0px;
+		border-radius: 15px;
+		margin: 3px;
+	}
+	
+
+	#footer{
+		text-align: center;
+		width: 98%;
+		height: 90px;
+		margin-top: 4%;
+		border-radius: 10px;
+		background: #d63031;
+		
+	}
+}
+@media only screen and (max-width: 350px){
+	#Caja_Formulario{
+		height: 60%;
+	}
+}
