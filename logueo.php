@@ -11,8 +11,7 @@ if ($_SESSION['TipoUsuario'] == null) {
 		  </script>";
 	die();
 }
-
-?>
+?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +25,8 @@ if ($_SESSION['TipoUsuario'] == null) {
 <body>
 	<h1>Inicio de sesión como <br> <?php echo $_SESSION['TipoUsuario'];?></h1>
 	<form id="formulario" method="POST" action="php/Logueo.php">
-
-		<input type="name" name="Usuario" placeholder="Escriba su usuario" class="input1">
+		<input type="number" name="IdUsuario" placeholder="Escriba su idUsuario">
+		<input type="email" name="CorreoUsuario" placeholder="Escriba su correo" class="input1">
 		<input type="password" name="Contraseña" placeholder="Escriba su contraseña">
 		<input id="boton1" type="submit" value="Ingresar">
 		<a href="index.php" class="Volver">Volver</a>

@@ -21,7 +21,7 @@
 		width: 300px;
 		height: 300px;
 		margin:  auto;
-		margin-top: -20%;
+		margin-top: 0%;
 		background-size: cover;
 	}
 
@@ -32,8 +32,7 @@
 
 	h1{
 		width: 80%;
-		margin: auto;
-		margin-top: 5%;
+		margin: 5% auto 0 auto;
 		border-radius: 10px;
 		background: #d63031;
 		color: #fff;
@@ -47,8 +46,7 @@
 		font-size: 20px;
 		border-radius: 5px;
 		border: none;
-		margin: auto;
-		margin-top: 5%;
+		margin: 5% auto 0 auto;
 		text-align: center;
 
 	}
@@ -66,8 +64,7 @@
 		height: 50px;
 		line-height: 50px;
 		font-size: 20px;
-		margin: auto;
-		margin-top: 5%;
+		margin: 5% auto 0 auto;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
@@ -133,8 +130,7 @@
 		font-size: 20px;
 		border-radius: 5px;
 		border: none;
-		margin: auto;
-		margin-top: 5%;
+		margin: 5% auto 0 auto;
 		text-align: center;
 		
 	}
@@ -152,8 +148,7 @@
 		height: 50px;
 		line-height: 50px;
 		font-size: 20px;
-		margin: auto;
-		margin-top: 5%;
+		margin: 5% auto 0 auto;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
@@ -177,18 +172,18 @@
 }
 
 @media only screen and (max-height: 800px){
-	.BusEscolar{
+	/*.BusEscolar{
 		margin-top: -20%;
-	}
+	}*/
 	footer{
 		height: 30vh;
 	}
 }
 
 @media only screen and (min-height: 600px){
-	.BusEscolar{
+/*	.BusEscolar{
 		margin-top: 1%;
-	}
+	}*/
 	footer{
 		height: 30vh;
 	}
@@ -209,8 +204,7 @@
 		display: block;
 		width: 300px;
 		height: 300px;
-		margin-top: -5% !important;
-		margin:  auto;
+		margin: 5% auto 0 auto;
 		background-size: cover;
 	}
 
@@ -255,8 +249,7 @@
 		height: 50px;
 		line-height: 50px;
 		font-size: 20px;
-		margin: auto;
-		margin-top: 2%;
+		margin: 5% auto 0 auto;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
