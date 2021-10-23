@@ -1,0 +1,62 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #FF5E45 ;
+	font-family: 'Vollkorn', serif;
+}
+
+.Volver{
+	display: inline-block;
+	margin-left: 80%;
+	margin-top: 5%;
+	width: 70px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	background: #e32525;
+	text-decoration: none;
+}
+
+p{
+	font-family: 'Vollkorn', serif;
+}
+
+h1{
+	width: 90%;
+	margin: auto;
+	margin-top: 5%;
+	border-radius: 10px;
+	background: #e32525;
+	color: #fff;
+	text-align: center;
+}
+
+input{
+	width: 80%;
+	height: 120px;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 5%;
+	display: block;
+	border: none;
+	background: #e32525;
+	color: #fff;
+	font-size: 20px;
+}
+
+
+
+#footer{
+	text-align: center;
+	width: 100vw;
+	height: 100px;
+	margin-top: 1%;
+	line-height: 25px;
+	background: #e32525;
+	color: #fff;
+}

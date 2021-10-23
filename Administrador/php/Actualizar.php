@@ -19,7 +19,7 @@ $function = FuncAtualizar();
 if ($function == true) {
 	echo "<script>
 		alert('Dato modificado correctamente');
-		window.location= '../navegacion/GestionUsuarios.php'
+		window.location = '../navegacion/GestionUsuarios.php'
 	</script>";	
 }
 elseif($function == false)

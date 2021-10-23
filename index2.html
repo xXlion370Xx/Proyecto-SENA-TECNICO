@@ -18,7 +18,7 @@
 			<div id="header">
 
 				<div id="botones">
-					<a href="logueo.html" id="boton1" >Iniciar sesión</a>
+					<a href="SeleccionTipoUsuario.html" id="boton1" >Iniciar sesión</a>
 				</div>
 				<div id="titulo">
 					<h1 id="h1"> Unión Transportadora Norte y Sur </h1>
