@@ -11,7 +11,7 @@ if ($_SESSION['TipoUsuario'] == null) {
 		  </script>";
 	die();
 }
-?> 
+?>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,16 +23,18 @@ if ($_SESSION['TipoUsuario'] == null) {
 	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Vollkorn&display=swap" rel="stylesheet">
 </head>
 <body>
+	<a href="index.php" class="Volver">Volver</a>
 	<h1>Inicio de sesión como <br> <?php echo $_SESSION['TipoUsuario'];?></h1>
 	<form id="formulario" method="POST" action="php/Logueo.php">
 		<input type="number" name="IdUsuario" placeholder="Escriba su idUsuario">
 		<input type="email" name="CorreoUsuario" placeholder="Escriba su correo" class="input1">
 		<input type="password" name="Contraseña" placeholder="Escriba su contraseña">
 		<input id="boton1" type="submit" value="Ingresar">
-		<a href="index.php" class="Volver">Volver</a>
+		
+		<img src="img/autobus-escolar.png" class="BusEscolar">
 	</form>
 
-	<img src="img/autobus-escolar.png" class="BusEscolar">
+	
 
 	<footer>
 

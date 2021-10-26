@@ -1,0 +1,83 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Gestion Operadores</title>
+		<link rel="stylesheet" type="text/css" href="../../css/estilooperadores.css">
+		<link rel="icon" type="image/png" href="../../img/Rueda.png">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Vollkorn&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/c9814e8fb5.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+		<script defer  type="text/javascript" src="js/MovimientoMenu.js"></script>
+	</head>
+	<body>
+
+		<div id="contenedor">
+
+			<a href="../../SeleccionTipoUsuario.html" class="CerrarSesion">Cerrar Sesion</a>  
+
+			<h1 id="h1_titulo">Unión Transportadora Norte y Sur</h1>  
+			<button class="toggle">
+				<i class="uis uis-bars"></i>
+			</button>
+			<ul class="nav__ul">
+				<li class="nav__li"><i class=" fas fa-user"></i><a href="GestionUsuarios.php">Gestion Usuarios</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionConductor.php">Gestion Conductor</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRelevador.php">Gestion Relevador</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionCalibrador.php">Gestion Calibrador</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRecorrido.php">Gestion Recorrido</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionVehiRecorrido.php">Gestion Vehiculorecorrido</a></li>
+				<li class="nav__li"><i class=" fas fa-car"></i><a href="GestionVehiculo.php">Gestion Vehiculo</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionMarca.php">Gestion Marca</a></li>
+				<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionDestino.php">Gestion Destino</a></li>
+			</ul>
+
+			<form method="POST" action="#" id="formulario">
+				<h2>Información del Operario</h2>
+				<input class="inputs" type="text" name="idOperaio" placeholder="Operario">
+				<select class="inputs" name="tipoDocOperario">
+					<option>Tipo de Documento</option>
+					<option value="">C.C</option>
+					<option value="">T.I</option>
+					<option value="">Cedula de Extranjeria</option>
+				</select> 
+				<input class="inputs" type="number" name="numDocOperario" placeholder="Número de Documento">
+				<input class="inputs" type="text" name="nombreOperario" placeholder="Nombre">
+				<input class="inputs" type="text" name="apellidoOperario" placeholder="Apellido">
+				<p><strong>Fecha de nacimiento</strong></p><input class="inputs" type="date" name="fechaNacimOperario" placeholder="Fecha de nacimiento">
+				<input class="inputs" type="number" name="telefonoOperario" placeholder="Telefono">
+				<input class="inputs" type="text" name="direccionOperario" placeholder="Dirección">
+				<input class="inputs" type="text" name="numCelularOperario" placeholder="Número Celular">
+				<input class="inputs" type="text" name="rhOperario" placeholder="RH del operario">
+				<input class="inputs" type="text" name="nomContacEmergencia" placeholder="Nombre de contacto de emergencia">
+				<input class="inputs" type="number" name="telContacEmergencia" placeholder="Teléfono de emergencia">
+				<select name="tipoOperario" class="inputs">
+					<option value="">Tipo de Operario</option>
+					<option value="">Nuevo</option>
+					<option value="">Antiguo</option>
+				</select>
+				<select name="estadoOperario" class="inputs">
+					<option>Estado de Operario</option>
+					<option name="estadoOperario">Empleado</option>
+					<option name="estadoOperario">Desempleado</option>
+				</select>
+				<input type="submit" class="button" value="Enviar">
+			</form>
+
+		</div>
+
+
+		<footer>
+			<p>¡Siguenos!</p>
+
+			<a href="https://www.facebook.com/profile.php?id=100005910945632" target="blank"><img class="ima" src="../../img/facebook.png" style="width: 3%"></a>
+			<a href="https://twitter.com/Danielillopill3"  target="blank"><img class="ima" src="../../img/twitter.png" style="width: 3%"></a>
+			<a href="https://www.youtube.com/channel/UCzHd5ilTV8jMYYD6k2RXrvw"  target="blank"><img class="ima" src="../../img/Youtube.png" style="width: 3%"></a>
+
+			<p>&#169:Todos los derechos reservados</p>
+			<div>Iconos diseñados por <a href="" title="dmitri13">dmitri13</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
+		</footer>
+
+	</body>
+	</html>

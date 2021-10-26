@@ -4,6 +4,17 @@
 }
 
 /*PARTE RESPONSIVE*/
+
+@media only screen and (max-width: 350px){
+	form{
+		height: 80vh !important;
+	}
+
+	footer{
+		height: 30vh !important;
+	}
+}
+
 @media only screen and (max-width: 768px){
 	a{
 		text-decoration: none;
@@ -17,17 +28,18 @@
 	}
 
 	.BusEscolar{
+		position: relative;
 		display: block;
 		width: 300px;
 		height: 300px;
 		margin:  auto;
-		margin-top: 0%;
+		margin-top: -9%;
 		background-size: cover;
 	}
 
 	form{
 		padding-top: 10%;
-		height: 50vh;
+		height: 65vh;
 	}
 
 	h1{
@@ -46,7 +58,7 @@
 		font-size: 20px;
 		border-radius: 5px;
 		border: none;
-		margin: 5% auto 0 auto;
+		margin: 1% auto 0 auto;
 		text-align: center;
 
 	}
@@ -60,11 +72,14 @@
 
 	.Volver{
 		display: block;
-		width: 300px;
-		height: 50px;
-		line-height: 50px;
+		/*width: 300px;*/
+		width: 70px;
+		height: 40px;
+		line-height: 40px;
 		font-size: 20px;
-		margin: 5% auto 0 auto;
+		/*margin: 1% auto 0 auto;*/
+		margin-top: 1%;
+		margin-left: 78%;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
@@ -73,14 +88,16 @@
 	}
 
 	footer{
+		position: relative;
 		width: 100vw;
-		height: 15vh;
+		height: 20vh;
 		line-height: 30px;
 		border-radius: 10px;
 		text-align: center;
 		background: #d63031;
 		color: #fff;
 	}
+
 	.ima {
 		border: 0.5px black solid;
 		border-radius: 10px;
@@ -100,17 +117,18 @@
 	}
 
 	.BusEscolar{
+		position: relative;
 		display: block;
 		width: 300px;
 		height: 300px;
 		margin:  auto;
-		margin-top: -20%;
+		margin-top: ;
 		background-size: cover;
 	}
 
 	form{
 		padding-top: 10%;
-		height: 55vh;
+		height: 60vh;
 	}
 
 	h1{
@@ -144,11 +162,14 @@
 
 	.Volver{
 		display: block;
-		width: 80%;
-		height: 50px;
-		line-height: 50px;
+		/*width: 300px;*/
+		width: 70px;
+		height: 40px;
+		line-height: 40px;
 		font-size: 20px;
-		margin: 5% auto 0 auto;
+		/*margin: 1% auto 0 auto;*/
+		margin-top: 1%;
+		margin-left: 90%;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
@@ -157,8 +178,9 @@
 	}
 
 	footer{
+		position: relative;
 		width: 100vw;
-		height: 15vh;
+		height: 20vh;
 		line-height: 30px;
 		border-radius: 10px;
 		text-align: center;
@@ -171,24 +193,8 @@
 	} 
 }
 
-@media only screen and (max-height: 800px){
-	/*.BusEscolar{
-		margin-top: -20%;
-	}*/
-	footer{
-		height: 30vh;
-	}
-}
 
-@media only screen and (min-height: 600px){
-/*	.BusEscolar{
-		margin-top: 1%;
-	}*/
-	footer{
-		height: 30vh;
-	}
-}
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 1030px){
 	a{
 		text-decoration: none;
 	}
@@ -202,21 +208,23 @@
 
 	.BusEscolar{
 		display: block;
+		position: relative;
 		width: 300px;
 		height: 300px;
-		margin: 5% auto 0 auto;
+		margin: -2% auto 0 auto;
 		background-size: cover;
+		/*background: red;*/
 	}
 
 	form{
-		height: 50vh;
+		height: 78vh;
 		padding: 0;
 	}
 
 	h1{
 		width: 80%;
 		margin: auto;
-		margin-top: 5%;
+/*		margin-top: 5%;*/
 		border-radius: 10px;
 		background: #d63031;
 		color: #fff;
@@ -225,13 +233,12 @@
 
 	input{
 		display: block;
-		width: 80%;
+		width: 300px;
 		height: 50px;
 		font-size: 20px;
 		border-radius: 5px;
 		border: none;
-		margin: auto;
-		margin-top: 2%;
+		margin: 1% auto 0 auto;
 		text-align: center;
 
 	}
@@ -245,11 +252,14 @@
 
 	.Volver{
 		display: block;
-		width: 80%;
-		height: 50px;
-		line-height: 50px;
+		/*width: 300px;*/
+		width: 70px;
+		height: 40px;
+		line-height: 40px;
 		font-size: 20px;
-		margin: 5% auto 0 auto;
+		/*margin: 1% auto 0 auto;*/
+		margin-top: 1%;
+		margin-left: 90%;
 		border-radius: 5px;
 		text-decoration: none;
 		background: #d63031;
@@ -258,6 +268,7 @@
 	}
 
 	footer{
+		position: relative;
 		width: 98.7vw;
 		height: 30vh;
 		line-height: 30px;
@@ -267,8 +278,9 @@
 		background: #d63031;
 		color: #fff;
 	}
+
 	.ima {
 		border: 0.5px black solid;
 		border-radius: 10px;
 	} 
-	}
+}

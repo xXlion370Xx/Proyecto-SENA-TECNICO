@@ -16,7 +16,7 @@ mysqli_set_charset($conexion, "utf8");
 
 // ----------------------- Manipulacion de datos
 
-$consulta = "SELECT * FROM usuario WHERE idUsuario = '$IdUsuario' and correoUsuario = '$correoUsuario' and passwordUsuario = '$Contraseña' "; 
+$consulta = "SELECT * FROM Usuario WHERE idUsuario = '$IdUsuario' and correoUsuario = '$correoUsuario' and passwordUsuario = '$Contraseña' "; 
 $resultado = mysqli_query($conexion, $consulta);
 $datos = mysqli_num_rows($resultado);
 	
