@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Gestion Operadores</title>
-	<link rel="stylesheet" type="text/css" href="../css/GestionUsuarios.css">
+	<title>Gestion Recorrido</title>
+	<link rel="stylesheet" type="text/css" href="../css/GestionUsuario.css">
 	<link rel="icon" type="image/png" href="../../img/Rueda.png">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Vollkorn&display=swap" rel="stylesheet">
@@ -33,22 +33,13 @@
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionDestino.php">Gestion Destino</a></li>
 		</ul>
 
-		<form method="POST" action="../php/Registrar.php" enctype="multipart/form-data" id="formulario">
-			<h2>Información del Usuario</h2>
-			<input type="email" name="correoUsuario" placeholder="Correo">
-			<input type="password" name="passwordUsuario" placeholder="Contraseña">
-			<input type="file" accept="image/*" name="fotoUsuario">
-			<select name="tipoUsuario">
-				<option>Tipo usuario</option>
-				<option name="tipoUsuario">Administrador</option>
-				<option name="tipoUsuario">Conductor</option>
-				<option name="tipoUsuario">Relevador</option>
-				<option name="tipoUsuario">Calibrador</option>
-			</select>
-			<select name="estadoUsuario">
-				<option>Estado Usuario</option>
-				<option name="estadoUsuario">Activo</option>
-				<option name="estadoUsuario">Inactivo</option>
+		<form method="POST" action="#" id="formulario">
+			<h2>Información del recorrido</h2>
+			<input type="date" name="fechaAsigVehiculo">
+			<select name="estadoAsigVehiculo">
+				<option>Estado recorrido</option>
+				<option name="estadoAsigVehiculo">Activo</option>
+				<option name="estadoAsigVehiculo">Inactivo</option>
 			</select>
 			<input type="submit" class="Enviar" value="Enviar">
 		</form>

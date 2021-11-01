@@ -7,11 +7,13 @@ include '../../FuncConectar.php';
 // ----------------------------------Manipulacion y borrado de datos
 
 
-$IdUsuario = $_POST['IdUsuario'];
+
 
 $conexion = ConectarBD();
-$sql = "delete from usuario where IdUsuario = '$IdUsuario'";
-$consulta = mysqli_query($conexion, $sql);
+
+$idUsuario = $_POST['idUsuario'];
+$deleteDatos = "delete from usuario where IdUsuario = '$IdUsuario'";
+$consulta = mysqli_query($conexion, $deleteDatos);
 
 
 if ($sql == true) {

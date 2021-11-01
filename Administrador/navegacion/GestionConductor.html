@@ -2,7 +2,7 @@
 	<html>
 	<head>
 		<meta charset="utf-8">
-		<title>Gestion Relevador</title>
+		<title>Gestion Conductor</title>
 		<link rel="stylesheet" type="text/css" href="../css/GestionUsuario.css">
 		<link rel="icon" type="image/png" href="../../img/Rueda.png">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
@@ -34,33 +34,28 @@
 			</ul>
 
 			<form method="POST" action="#" id="formulario">
-				<h2>Información del Relevador</h2>
-				<select class="inputs" name="tipoDocRelevador">
+				<h2>Información del Conductor</h2>
+				<select class="inputs" name="tipoDocConductor">
 					<option>Tipo de Documento</option>
 					<option value="">C.C</option>
 					<option value="">T.I</option>
 					<option value="">Cedula de Extranjeria</option>
 				</select> 
-				<input class="inputs" type="number" name="numDocRelevador" placeholder="Número de Documento">
-				<input class="inputs" type="text" name="nombreRelevador" placeholder="Nombre">
-				<input class="inputs" type="text" name="apellidoRelevador" placeholder="Apellido">
+				<input class="inputs" type="number" name="numDocConductor" placeholder="Número de Documento">
+				<input class="inputs" type="text" name="nombreConductor" placeholder="Nombre">
+				<input class="inputs" type="text" name="apellidoConductor" placeholder="Apellido">
 				<p><strong>Fecha de nacimiento</strong></p>
-				<input class="inputs" type="date" name="fechaNacimRelevador" placeholder="Fecha de nacimiento">
-				<input class="inputs" type="number" name="telefonoRelevador" placeholder="Telefono">
-				<input class="inputs" type="text" name="direccionRelevador" placeholder="Dirección">
-				<input class="inputs" type="text" name="numCelularRelevador" placeholder="Número Celular">
-				<input class="inputs" type="text" name="rhRelevador" placeholder="RH del operario">
+				<input class="inputs" type="date" name="fechaNacimConductor" placeholder="Fecha de nacimiento">
+				<input class="inputs" type="number" name="telefonoConductor" placeholder="Telefono">
+				<input class="inputs" type="text" name="direccionConductor" placeholder="Dirección">
+				<input class="inputs" type="text" name="numCelularConductor" placeholder="Número Celular">
+				<input class="inputs" type="text" name="rhConductor" placeholder="RH del Conductor">
 				<input class="inputs" type="text" name="nomContacEmergencia" placeholder="Nombre de contacto de emergencia">
 				<input class="inputs" type="number" name="telContacEmergencia" placeholder="Teléfono de emergencia">
-				<select name="tipoRelevador" class="inputs">
-					<option value="">Tipo de Operario</option>
-					<option value="">Nuevo</option>
-					<option value="">Antiguo</option>
-				</select>
-				<select name="estadoRelevador" class="inputs">
-					<option>Estado de Operario</option>
-					<option name="estadoRelevador">Empleado</option>
-					<option name="estadoRelevador">Desempleado</option>
+				<select name="estadoConductor">
+				<option name="estadoConductor">Estado Conductor</option>
+				<option name="estadoConductor">Activo</option>
+				<option name="estadoConductor">Inactivo</option>
 				</select>
 				<input type="submit" class="Enviar" value="Enviar">
 			</form>

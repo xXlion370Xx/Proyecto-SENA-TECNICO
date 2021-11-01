@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Gestion Operadores</title>
-	<link rel="stylesheet" type="text/css" href="../css/GestionUsuarios.css">
+	<link rel="stylesheet" type="text/css" href="../css/GestionUsuario.css">
 	<link rel="icon" type="image/png" href="../../img/Rueda.png">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Vollkorn&display=swap" rel="stylesheet">
@@ -33,22 +33,26 @@
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionDestino.php">Gestion Destino</a></li>
 		</ul>
 
-		<form method="POST" action="../php/Registrar.php" enctype="multipart/form-data" id="formulario">
-			<h2>Información del Usuario</h2>
-			<input type="email" name="correoUsuario" placeholder="Correo">
-			<input type="password" name="passwordUsuario" placeholder="Contraseña">
-			<input type="file" accept="image/*" name="fotoUsuario">
-			<select name="tipoUsuario">
-				<option>Tipo usuario</option>
-				<option name="tipoUsuario">Administrador</option>
-				<option name="tipoUsuario">Conductor</option>
-				<option name="tipoUsuario">Relevador</option>
-				<option name="tipoUsuario">Calibrador</option>
-			</select>
-			<select name="estadoUsuario">
-				<option>Estado Usuario</option>
-				<option name="estadoUsuario">Activo</option>
-				<option name="estadoUsuario">Inactivo</option>
+		<form method="POST" action="#" id="formulario">
+			<h2>Información del Calibrador</h2>
+			<select class="inputs" name="tipoDocCalibrador">
+				<option>Tipo de Documento</option>
+				<option value="">C.C</option>
+				<option value="">T.I</option>
+				<option value="">Cedula de Extranjeria</option>
+			</select> 
+			<input class="inputs" type="number" name="numDocCalibrador" placeholder="Número de Documento">
+			<input class="inputs" type="text" name="nombreCalibrador" placeholder="Nombre">
+			<input class="inputs" type="text" name="apellidoCalibrador" placeholder="Apellido">
+			<p><strong>Fecha de nacimiento</strong></p>
+			<input class="inputs" type="date" name="fechaNacimCalibrador" placeholder="Fecha de nacimiento">
+			<input class="inputs" type="number" name="telefonoCalibrador" placeholder="Telefono">
+			<input class="inputs" type="text" name="direccionCalibrador" placeholder="Dirección">
+			<input class="inputs" type="text" name="numCelularCalibrador" placeholder="Número Celular">
+			<select name="estadoCalibrador">
+				<option>Estado Calibrador</option>
+				<option name="estadoCalibrador">Activo</option>
+				<option name="estadoCalibrador">Inactivo</option>
 			</select>
 			<input type="submit" class="Enviar" value="Enviar">
 		</form>

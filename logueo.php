@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-$TipoUsuario = $_POST['TipoUsuario'];
-$_SESSION['TipoUsuario'] = $TipoUsuario;
+$tipoUsuario = $_POST['TipoUsuario'];
+$_SESSION['TipoUsuario'] = $tipoUsuario;
 
 if ($_SESSION['TipoUsuario'] == null) {
 	echo "<script>

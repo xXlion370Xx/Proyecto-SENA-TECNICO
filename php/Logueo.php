@@ -21,7 +21,7 @@ $resultado = mysqli_query($conexion, $consulta);
 $datos = mysqli_num_rows($resultado);
 	
 	if ($datos>0 and $_SESSION['TipoUsuario'] == $Array[0]) {
-		header("Location:../Administrador/navegacion/GestionOperadores.html");
+		header("Location:../Administrador/navegacion/GestionUsuarios.php");
 			}
 			elseif ($datos>0 and $_SESSION['TipoUsuario'] == $Array[1]) {
 			header("Location:../Conductor/navegacion/inicio.html");
@@ -33,7 +33,11 @@ $datos = mysqli_num_rows($resultado);
 						header("Location:../Calibrador/navegacion/inicio.html");
 					}
 	else {
-	echo "Usuario y contraseña no encontrado";
+	echo "<script>
+				alert('Usuario y/o contraseña incorrectos.');
+				window.location = '../SeleccionTipoUsuario.html';
+		</script>
+		";
 }
 
 // ----------------------------fin de la consulta

@@ -27,16 +27,16 @@ else{
 // $resultado = mysqli_query($conexion, $consulta);
 // $datos = mysqli_num_rows($resultado);
 
-// 	if ($datos>0) {
-// 		echo "<script>
-// 				alert('Usuario y Contraseña correctos, click en aceptar para continuar.');
-// 				window.location = '../navegacion/PaginaInicio.html';
-// 			</script>
-// 		";
-// 	}
-// 	else {
-// 		echo "Usuario y contraseña no encontrado";
-// 	}
+	// if ($datos>0) {
+	// 	echo "<script>
+	// 			alert('Usuario y Contraseña correctos, click en aceptar para continuar.');
+	// 			window.location = '../navegacion/PaginaInicio.html';
+	// 		</script>
+	// 	";
+	// }
+	// else {
+	// 	echo "Usuario y contraseña no encontrado";
+	// }
 
 // ----------------------------fin de la consulta
 
