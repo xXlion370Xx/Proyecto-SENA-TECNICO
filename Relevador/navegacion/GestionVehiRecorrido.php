@@ -13,17 +13,14 @@ include '../../php/FuncConectar.php';
 
 // ----------------CODIGO PARA MOSTRAR DATOS EN LA TABLA
 $conexion = ConectarBD();
-$mostrarTabla = "SELECT * FROM Usuario";
+$mostrarTabla = "SELECT * FROM asigvehiculorecorrido";
 $query = mysqli_query($conexion, $mostrarTabla);
 $Array = mysqli_fetch_array($query);
 
-//---------------- CODIGO PARA REGISTRAR LOS DATOS A LA TABLA USUARIO
-$idUsuario = (isset($_POST['idUsuario']))?$_POST['idUsuario']:"";
-$correoUsuario = (isset($_POST['correoUsuario']))?$_POST['correoUsuario']:"";
-$passwordUsuario = (isset($_POST['passwordUsuario']))?$_POST['passwordUsuario']:"";
-$fotoUsuario = (isset($_FILES['fotoUsuario']["name"]))?$_FILES['fotoUsuario']["name"]:"";
-$tipoUsuario = (isset($_POST['tipoUsuario']))?$_POST['tipoUsuario']:""; 
-$estadoUsuario = (isset($_POST['estadoUsuario']))?$_POST['estadoUsuario']:"";
+//---------------- CODIGO PARA REGISTRAR LOS DATOS A LA TABLA Asigvehiculorecorrido
+$idAsigvehiculorecorrido = (isset($_POST['idAsigvehiculorecorrido']))?$_POST['idAsigvehiculorecorrido']:"";
+$fechaAsigvehiculorecorrido = (isset($_POST['nomAsigvehiculorecorrido']))?$_POST['nomAsigvehiculorecorrido']:"";
+$estadoAsigvehiculorecorrido = (isset($_POST['estadoAsigvehiculorecorrido']))?$_POST['estadoAsigvehiculorecorrido']:"";
 
 $accion = (isset($_POST['Accion']))?$_POST['Accion']:"";
 
@@ -35,30 +32,28 @@ $mostrarModal = false;
 switch ($accion) {
 	
 	case 'Agregar':
-	$insertDatos = "INSERT INTO Usuario(correoUsuario, passwordUsuario, fotoUsuario, tipoUsuario, estadoUsuario) values('$_REQUEST[correoUsuario]','$_REQUEST[passwordUsuario]', '$fotoUsuario', '$_REQUEST[tipoUsuario]', '$_REQUEST[estadoUsuario]')";
-	mysqli_query($conexion, $insertDatos) or die(" El usuario ya existe " . mysqli_error($conexion));
+	$insertDatos = "INSERT INTO asigvehiculorecorrido(idAsigVehiculo, fechaAsigVehiculo, estadoAsigVehiculo) values('$_REQUEST[idAsigvehiculorecorrido]', '$_REQUEST[fechaAsigvehiculorecorrido]', '$_REQUEST[estadoAsigvehiculorecorrido]')";
+	mysqli_query($conexion, $insertDatos) or die(" El Asigvehiculorecorrido ya existe " . mysqli_error($conexion));
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionVehiRecorrido.php");
 	break;
 
 	case 'Modificar':
-	echo "Presionaste Modificar";
-	$updateDatos = "UPDATE Usuario SET correoUsuario = '$_REQUEST[correoUsuario]', passwordUsuario = '$_REQUEST[passwordUsuario]', fotoUsuario = '$_REQUEST[fotoUsuario]', tipoUsuario = '$_REQUEST[tipoUsuario]', estadoUsuario = '$_REQUEST[estadoUsuario]' where idUsuario = '$_REQUEST[idUsuario]' ";
+	$updateDatos = "UPDATE asigvehiculorecorrido SET fechaAsigVehiculo = '$_REQUEST[fechaAsigvehiculorecorrido]', estadoAsigVehiculo = '$_REQUEST[estadoAsigvehiculorecorrido]' where idAsigVehiculo = '$_REQUEST[idAsigvehiculorecorrido]' ";
 	$updateDatos = mysqli_query($conexion, $updateDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionVehiRecorrido.php");
 	break;
 
 	case 'Eliminar':
-	echo "Presionaste Eliminar";
-	$deleteDatos = "DELETE FROM Usuario WHERE idUsuario = $idUsuario";
+	$deleteDatos = "DELETE FROM asigvehiculorecorrido WHERE idAsigVehiculo = $idAsigvehiculorecorrido";
 	$consulta = mysqli_query($conexion, $deleteDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location:  GestionVehiRecorrido.php");
 	break;
 
 	case 'Cancelar':
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionVehiRecorrido.php");
 	break;
 
 	case 'Seleccionar':
@@ -66,14 +61,13 @@ switch ($accion) {
 	$acccionModificar = $accionEliminar = $accionCancelar = "";
 	$mostrarModal = true; 
 	break;
-}
-
+}	
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Gestion Usuario</title>
+	<title>Gestion Vehiculo Recorrido</title>
 	<link rel="stylesheet" type="text/css" href="../../cssBootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/GestionUsuarios.css">
 	<link rel="icon" type="image/png" href="../../img/Rueda.png">
@@ -97,7 +91,7 @@ switch ($accion) {
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRelevador.php">Gestion Relevador</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionCalibrador.php">Gestion Calibrador</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRecorrido.php">Gestion Recorrido</a></li>
-			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionVehiRecorrido.php">Gestion Vehiculorecorrido</a></li>
+			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionVehiRecorrido.php">Gestion VehiculoRecorrido</a></li>
 			<li class="nav__li"><i class=" fas fa-car"></i><a href="GestionVehiculo.php">Gestion Vehiculo</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionMarca.php">Gestion Marca</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionDestino.php">Gestion Destino</a></li>		
@@ -110,28 +104,19 @@ switch ($accion) {
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Vehiculo Recorrido</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="form-row">
-							<input required type="hidden" name="idUsuario" placeholder="idUsuario" id="idUsuario" value="<?php echo $idUsuario; ?>">
-							<input required type="email" name="correoUsuario" id="correoUsuario" placeholder="Correo" value="<?php echo $correoUsuario; ?>">
-							<input required type="password" name="passwordUsuario" id="passwordUsuario" placeholder="Contraseña" value="<?php echo $passwordUsuario; ?>">
-							<input type="file" accept="image/*" name="fotoUsuario" id="fotoUsuario" value="<?php echo $fotoUsuario; ?>">
-							<p style="color: #000"><strong>Tipo usuario</strong></p>
-							<select name="tipoUsuario" id="tipoUsuario" required>
-								<option name="tipoUsuario"><?php echo $tipoUsuario; ?></option>
-								<option name="tipoUsuario" id="tipoUsuario">Administrador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Conductor</option>
-								<option name="tipoUsuario" id="tipoUsuario">Relevador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Calibrador</option>
-							</select>
-							<p style="color: #000;"><strong>Estado usuario</strong></p>
-							<select  name="estadoUsuario" id="estadoUsuario" required>
-								<option name="estadoUsuario"> <?php echo $estadoUsuario; ?></option>
-								<option name="estadoUsuario" id="estadoUsuario">Activo</option>
-								<option name="estadoUsuario" id="estadoUsuario">Inactivo</option>
+							<input required type="number" name="idAsigvehiculorecorrido" placeholder="idAsigvehiculorecorrido" id="idAsigvehiculorecorrido" value="<?php echo $idAsigvehiculorecorrido; ?>">
+							<p style="color: #000;"><strong>Fecha</strong></p>
+							<input required type="date" name="fechaAsigvehiculorecorrido" id="fechaAsigvehiculorecorrido" placeholder="Nombre" value="<?php echo $fechaAsigvehiculorecorrido; ?>">
+							<p style="color: #000;"><strong>Estado Asigvehiculorecorrido</strong></p>
+							<select  name="estadoAsigvehiculorecorrido" id="estadoAsigvehiculorecorrido" required>
+								<option name="estadoAsigvehiculorecorrido"> <?php echo $estadoAsigvehiculorecorrido; ?></option>
+								<option name="estadoAsigvehiculorecorrido" id="estadoAsigvehiculorecorrido">Activo</option>
+								<option name="estadoAsigvehiculorecorrido" id="estadoAsigvehiculorecorrido">Inactivo</option>
 							</select>
 
 						</div>
@@ -147,7 +132,7 @@ switch ($accion) {
 		</div>
 	</form>
 
-	<h2>Gestion Usuarios</h2>
+	<h2>Gestion Asigvehiculorecorridos</h2>
 	<!-- Button trigger modal -->
 	<button type="button" class="Agregar btn btn-primary" class="BotonAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
 		Agregar registro +
@@ -156,11 +141,8 @@ switch ($accion) {
 		<thead>
 			<!-- Titulos tabla -->
 			<tr>
-				<th>id Usuario</th>
-				<th>Correo</th>
-				<th>Password</th>
-				<th>Foto del usuario</th>
-				<th>Tipo de usuario</th>
+				<th>id Vehiculo Recorrido</th>
+				<th>Fecha</th>
 				<th>Estado</th>
 				<th class="thSeleccionar">Opciones</th>
 			</tr>
@@ -174,20 +156,14 @@ switch ($accion) {
 			foreach ($query as $columna) 
 				{?>
 					<tr>
-						<td><?php echo $columna['idUsuario'];?></td>
-						<td><?php echo $columna['correoUsuario'];?></td>
-						<td><?php echo $columna['passwordUsuario'];?></td>
-						<td><img class="img-thumbnail" width="100px" src="../../imgUsuarios/<?php echo $columna['fotoUsuario'];?>"></td>
-						<td><?php echo $columna['tipoUsuario'];?></td>
-						<td><?php echo $columna['estadoUsuario'];?></td>
+						<td><?php echo $columna['idAsigVehiculo'];?></td>
+						<td><?php echo $columna['fechaAsigVehiculo'];?></td>
+						<td><?php echo $columna['estadoAsigVehiculo'];?></td>
 						<td  class="tdSeleccionar">
 							<form action="" method="POST">
-								<input type="hidden" name="idUsuario" value="<?php echo $columna['idUsuario'];?>">
-								<input type="hidden" name="correoUsuario" value="<?php echo $columna['correoUsuario'];?>">
-								<input type="hidden" name="passwordUsuario" value="<?php echo $columna['passwordUsuario'];?>">
-								<input type="hidden" name="fotoUsuario" value="<?php echo $columna['fotoUsuario'];?>">
-								<input type="hidden" name="tipoUsuario" value="<?php echo $columna['tipoUsuario'];?>">
-								<input type="hidden" name="estadoUsuario" value="<?php echo $columna['estadoUsuario'];?>">
+								<input type="hidden" name="idAsigvehiculorecorrido" value="<?php echo $columna['idAsigVehiculo'];?>">
+								<input type="hidden" name="nomAsigvehiculorecorrido" value="<?php echo $columna['fechaAsigVehiculo'];?>">
+								<input type="hidden" name="estadoAsigvehiculorecorrido" value="<?php echo $columna['estadoAsigVehiculo'];?>">
 								<button type="submit" name="Accion" class="btn btn-seleccionar" value="Seleccionar">Seleccionar</button>
 							</form>
 						</td>

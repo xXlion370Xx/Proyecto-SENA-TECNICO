@@ -13,17 +13,18 @@ include '../../php/FuncConectar.php';
 
 // ----------------CODIGO PARA MOSTRAR DATOS EN LA TABLA
 $conexion = ConectarBD();
-$mostrarTabla = "SELECT * FROM Usuario";
+$mostrarTabla = "SELECT * FROM destino";
 $query = mysqli_query($conexion, $mostrarTabla);
 $Array = mysqli_fetch_array($query);
 
 //---------------- CODIGO PARA REGISTRAR LOS DATOS A LA TABLA USUARIO
-$idUsuario = (isset($_POST['idUsuario']))?$_POST['idUsuario']:"";
-$correoUsuario = (isset($_POST['correoUsuario']))?$_POST['correoUsuario']:"";
-$passwordUsuario = (isset($_POST['passwordUsuario']))?$_POST['passwordUsuario']:"";
-$fotoUsuario = (isset($_FILES['fotoUsuario']["name"]))?$_FILES['fotoUsuario']["name"]:"";
-$tipoUsuario = (isset($_POST['tipoUsuario']))?$_POST['tipoUsuario']:""; 
-$estadoUsuario = (isset($_POST['estadoUsuario']))?$_POST['estadoUsuario']:"";
+$idDestino = (isset($_POST['idDestino']))?$_POST['idDestino']:"";
+$nomDestino = (isset($_POST['nomDestino']))?$_POST['nomDestino']:"";
+$direccionDestino = (isset($_POST['direccionDestino']))?$_POST['direccionDestino']:"";
+$nomRespDestino = (isset($_POST['nomRespDestino']))?$_POST['nomRespDestino']:"";
+$telefonoDestino = (isset($_POST['telefonoDestino']))?$_POST['telefonoDestino']:""; 
+$numcelularDestino = (isset($_POST['numcelularDestino']))?$_POST['numcelularDestino']:"";
+$estadoDestino = (isset($_POST['estadoDestino']))?$_POST['estadoDestino']:"";
 
 $accion = (isset($_POST['Accion']))?$_POST['Accion']:"";
 
@@ -35,30 +36,28 @@ $mostrarModal = false;
 switch ($accion) {
 	
 	case 'Agregar':
-	$insertDatos = "INSERT INTO Usuario(correoUsuario, passwordUsuario, fotoUsuario, tipoUsuario, estadoUsuario) values('$_REQUEST[correoUsuario]','$_REQUEST[passwordUsuario]', '$fotoUsuario', '$_REQUEST[tipoUsuario]', '$_REQUEST[estadoUsuario]')";
+	$insertDatos = "INSERT INTO `destino`(`idDestino`, `nomDestino`, `direccionDestino`, `nomRespDestino`, `telefonoDestino`, `numcelularDestino`, `estadoDestino`) VALUES ('$_REQUEST[idDestino]','$_REQUEST[nomDestino]','$_REQUEST[direccionDestino]', '$_REQUEST[nomRespDestino]', '$_REQUEST[telefonoDestino]', '$_REQUEST[numcelularDestino]', '$_REQUEST[estadoDestino]')";
 	mysqli_query($conexion, $insertDatos) or die(" El usuario ya existe " . mysqli_error($conexion));
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionDestino.php");
 	break;
 
 	case 'Modificar':
-	echo "Presionaste Modificar";
-	$updateDatos = "UPDATE Usuario SET correoUsuario = '$_REQUEST[correoUsuario]', passwordUsuario = '$_REQUEST[passwordUsuario]', fotoUsuario = '$_REQUEST[fotoUsuario]', tipoUsuario = '$_REQUEST[tipoUsuario]', estadoUsuario = '$_REQUEST[estadoUsuario]' where idUsuario = '$_REQUEST[idUsuario]' ";
+	$updateDatos = "UPDATE `destino` SET nomDestino = '$_REQUEST[nomDestino]', direccionDestino = '$_REQUEST[direccionDestino]', `nomRespDestino` = '$_REQUEST[nomRespDestino]',`telefonoDestino` = '$_REQUEST[telefonoDestino]', `numcelularDestino` = '$_REQUEST[numcelularDestino]', `estadoDestino` = '$_REQUEST[estadoDestino]' WHERE `idDestino`= '$_REQUEST[idDestino]'";
 	$updateDatos = mysqli_query($conexion, $updateDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionDestino.php");
 	break;
 
 	case 'Eliminar':
-	echo "Presionaste Eliminar";
-	$deleteDatos = "DELETE FROM Usuario WHERE idUsuario = $idUsuario";
+	$deleteDatos = "DELETE FROM destino WHERE idDestino = $idDestino";
 	$consulta = mysqli_query($conexion, $deleteDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionDestino.php");
 	break;
 
 	case 'Cancelar':
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionDestino.php");
 	break;
 
 	case 'Seleccionar':
@@ -67,7 +66,6 @@ switch ($accion) {
 	$mostrarModal = true; 
 	break;
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,30 +108,23 @@ switch ($accion) {
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Destino</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="form-row">
-							<input required type="hidden" name="idUsuario" placeholder="idUsuario" id="idUsuario" value="<?php echo $idUsuario; ?>">
-							<input required type="email" name="correoUsuario" id="correoUsuario" placeholder="Correo" value="<?php echo $correoUsuario; ?>">
-							<input required type="password" name="passwordUsuario" id="passwordUsuario" placeholder="Contraseña" value="<?php echo $passwordUsuario; ?>">
-							<input type="file" accept="image/*" name="fotoUsuario" id="fotoUsuario" value="<?php echo $fotoUsuario; ?>">
-							<p style="color: #000"><strong>Tipo usuario</strong></p>
-							<select name="tipoUsuario" id="tipoUsuario" required>
-								<option name="tipoUsuario"><?php echo $tipoUsuario; ?></option>
-								<option name="tipoUsuario" id="tipoUsuario">Administrador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Conductor</option>
-								<option name="tipoUsuario" id="tipoUsuario">Relevador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Calibrador</option>
+							<input required type="number" name="idDestino" placeholder="id Destino" value="<?php echo$idDestino;?>">
+							<input required type="text" name="nomDestino" placeholder="Nombre destino" value="<?php echo$nomDestino?>">
+							<input required type="text" name="direccionDestino" placeholder="Dirección" value="<?php echo$direccionDestino?>">
+							<input required type="text" name="nomRespDestino" placeholder="Responsable destino" value="<?php echo$nomRespDestino?>">
+							<input required type="number" name="telefonoDestino" placeholder="Telefono" value="<?php echo$telefonoDestino?>">
+							<input required type="number" name="numcelularDestino" placeholder="Numero celular" value="<?php echo$numcelularDestino?>">
+							<p style="color: #000;"><strong>Estado Destino</strong></p>
+							<select required name="estadoDestino">
+								<option name="estadoDestino"><?php echo $estadoDestino; ?></option>
+								<option name="estadoDestino">Activo</option>
+								<option name="estadoDestino">Inactivo</option>
 							</select>
-							<p style="color: #000;"><strong>Estado usuario</strong></p>
-							<select  name="estadoUsuario" id="estadoUsuario" required>
-								<option name="estadoUsuario"> <?php echo $estadoUsuario; ?></option>
-								<option name="estadoUsuario" id="estadoUsuario">Activo</option>
-								<option name="estadoUsuario" id="estadoUsuario">Inactivo</option>
-							</select>
-
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -156,12 +147,13 @@ switch ($accion) {
 		<thead>
 			<!-- Titulos tabla -->
 			<tr>
-				<th>id Usuario</th>
-				<th>Correo</th>
-				<th>Password</th>
-				<th>Foto del usuario</th>
-				<th>Tipo de usuario</th>
-				<th>Estado</th>
+				<th>id Destino</th>
+				<th>Nombre destino</th>
+				<th>Direccion Destino</th>
+				<th>Nom Responsable destino</th>
+				<th>Telefono Destino</th>
+				<th>Num Celular Destino</th>
+				<th>Estado Destino</th>
 				<th class="thSeleccionar">Opciones</th>
 			</tr>
 		</thead>
@@ -174,21 +166,23 @@ switch ($accion) {
 			foreach ($query as $columna) 
 				{?>
 					<tr>
-						<td><?php echo $columna['idUsuario'];?></td>
-						<td><?php echo $columna['correoUsuario'];?></td>
-						<td><?php echo $columna['passwordUsuario'];?></td>
-						<td><img class="img-thumbnail" width="100px" src="../../imgUsuarios/<?php echo $columna['fotoUsuario'];?>"></td>
-						<td><?php echo $columna['tipoUsuario'];?></td>
-						<td><?php echo $columna['estadoUsuario'];?></td>
-						<td  class="tdSeleccionar">
+						<td><?php echo$columna['idDestino'];?></td>
+						<td><?php echo$columna['nomDestino'];?></td>
+						<td><?php echo$columna['direccionDestino'];?></td>
+						<td><?php echo$columna['nomRespDestino'];?></td>
+						<td><?php echo$columna['telefonoDestino'];?></td>
+						<td><?php echo$columna['numcelularDestino'];?></td>
+						<td><?php echo$columna['estadoDestino'];?></td>
+						<td class="tdSeleccionar">
 							<form action="" method="POST">
-								<input type="hidden" name="idUsuario" value="<?php echo $columna['idUsuario'];?>">
-								<input type="hidden" name="correoUsuario" value="<?php echo $columna['correoUsuario'];?>">
-								<input type="hidden" name="passwordUsuario" value="<?php echo $columna['passwordUsuario'];?>">
-								<input type="hidden" name="fotoUsuario" value="<?php echo $columna['fotoUsuario'];?>">
-								<input type="hidden" name="tipoUsuario" value="<?php echo $columna['tipoUsuario'];?>">
-								<input type="hidden" name="estadoUsuario" value="<?php echo $columna['estadoUsuario'];?>">
-								<button type="submit" name="Accion" class="btn btn-seleccionar" value="Seleccionar">Seleccionar</button>
+							<input required type="hidden" name="idDestino" value="<?php echo$columna['idDestino'];?>">
+							<input required type="hidden" name="nomDestino" placeholder="Nombre destino" value="<?php echo$columna['nomDestino']?>">
+							<input required type="hidden" name="direccionDestino" placeholder="Dirección" value="<?php echo$columna['direccionDestino']?>">
+							<input required type="hidden" name="nomRespDestino" placeholder="Responsable destino" value="<?php echo$columna['nomRespDestino']?>">
+							<input required type="hidden" name="telefonoDestino" placeholder="Telefono" value="<?php echo$columna['telefonoDestino']?>">
+							<input required type="hidden" name="numcelularDestino" placeholder="Numero celular" value="<?php echo$columna['numcelularDestino']?>">
+							<input required type="hidden" name="estadoDestino" value="<?php echo$columna['estadoDestino']?>">
+							<button type="submit" name="Accion" class="btn btn-seleccionar" value="Seleccionar">Seleccionar</button>
 							</form>
 						</td>
 					</tr>

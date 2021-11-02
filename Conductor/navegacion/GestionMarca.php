@@ -13,17 +13,14 @@ include '../../php/FuncConectar.php';
 
 // ----------------CODIGO PARA MOSTRAR DATOS EN LA TABLA
 $conexion = ConectarBD();
-$mostrarTabla = "SELECT * FROM Usuario";
+$mostrarTabla = "SELECT * FROM marca";
 $query = mysqli_query($conexion, $mostrarTabla);
 $Array = mysqli_fetch_array($query);
 
-//---------------- CODIGO PARA REGISTRAR LOS DATOS A LA TABLA USUARIO
-$idUsuario = (isset($_POST['idUsuario']))?$_POST['idUsuario']:"";
-$correoUsuario = (isset($_POST['correoUsuario']))?$_POST['correoUsuario']:"";
-$passwordUsuario = (isset($_POST['passwordUsuario']))?$_POST['passwordUsuario']:"";
-$fotoUsuario = (isset($_FILES['fotoUsuario']["name"]))?$_FILES['fotoUsuario']["name"]:"";
-$tipoUsuario = (isset($_POST['tipoUsuario']))?$_POST['tipoUsuario']:""; 
-$estadoUsuario = (isset($_POST['estadoUsuario']))?$_POST['estadoUsuario']:"";
+//---------------- CODIGO PARA REGISTRAR LOS DATOS A LA TABLA Marca
+$idMarca = (isset($_POST['idMarca']))?$_POST['idMarca']:"";
+$nomMarca = (isset($_POST['nomMarca']))?$_POST['nomMarca']:"";
+$estadoMarca = (isset($_POST['estadoMarca']))?$_POST['estadoMarca']:"";
 
 $accion = (isset($_POST['Accion']))?$_POST['Accion']:"";
 
@@ -35,30 +32,28 @@ $mostrarModal = false;
 switch ($accion) {
 	
 	case 'Agregar':
-	$insertDatos = "INSERT INTO Usuario(correoUsuario, passwordUsuario, fotoUsuario, tipoUsuario, estadoUsuario) values('$_REQUEST[correoUsuario]','$_REQUEST[passwordUsuario]', '$fotoUsuario', '$_REQUEST[tipoUsuario]', '$_REQUEST[estadoUsuario]')";
-	mysqli_query($conexion, $insertDatos) or die(" El usuario ya existe " . mysqli_error($conexion));
+	$insertDatos = "INSERT INTO marca(idMarca, nomMarca, estadoMarca) values('$_REQUEST[idMarca]', '$_REQUEST[nomMarca]', '$_REQUEST[estadoMarca]')";
+	mysqli_query($conexion, $insertDatos) or die(" El Marca ya existe " . mysqli_error($conexion));
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionMarca.php");
 	break;
 
 	case 'Modificar':
-	echo "Presionaste Modificar";
-	$updateDatos = "UPDATE Usuario SET correoUsuario = '$_REQUEST[correoUsuario]', passwordUsuario = '$_REQUEST[passwordUsuario]', fotoUsuario = '$_REQUEST[fotoUsuario]', tipoUsuario = '$_REQUEST[tipoUsuario]', estadoUsuario = '$_REQUEST[estadoUsuario]' where idUsuario = '$_REQUEST[idUsuario]' ";
+	$updateDatos = "UPDATE marca SET nomMarca = '$_REQUEST[nomMarca]', estadoMarca = '$_REQUEST[estadoMarca]' where idMarca = '$_REQUEST[idMarca]' ";
 	$updateDatos = mysqli_query($conexion, $updateDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionMarca.php");
 	break;
 
 	case 'Eliminar':
-	echo "Presionaste Eliminar";
-	$deleteDatos = "DELETE FROM Usuario WHERE idUsuario = $idUsuario";
+	$deleteDatos = "DELETE FROM marca WHERE idMarca = $idMarca";
 	$consulta = mysqli_query($conexion, $deleteDatos);
 	$CerrarSesion = mysqli_close($conexion) or die("Probemas al cerrar sesion");
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionMarca.php");
 	break;
 
 	case 'Cancelar':
-	header("Location: GestionUsuarios.php");
+	header("Location: GestionMarca.php");
 	break;
 
 	case 'Seleccionar':
@@ -66,14 +61,13 @@ switch ($accion) {
 	$acccionModificar = $accionEliminar = $accionCancelar = "";
 	$mostrarModal = true; 
 	break;
-}
-
+}	
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Gestion Usuario</title>
+	<title>Gestion Marca</title>
 	<link rel="stylesheet" type="text/css" href="../../cssBootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../css/GestionUsuarios.css">
 	<link rel="icon" type="image/png" href="../../img/Rueda.png">
@@ -97,7 +91,7 @@ switch ($accion) {
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRelevador.php">Gestion Relevador</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionCalibrador.php">Gestion Calibrador</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionRecorrido.php">Gestion Recorrido</a></li>
-			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionVehiRecorrido.php">Gestion Vehiculorecorrido</a></li>
+			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionVehiMarca.php">Gestion VehiculoMarca</a></li>
 			<li class="nav__li"><i class=" fas fa-car"></i><a href="GestionVehiculo.php">Gestion Vehiculo</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionMarca.php">Gestion Marca</a></li>
 			<li class="nav__li"><i class=" fas fa-tv"></i><a href="GestionDestino.php">Gestion Destino</a></li>		
@@ -110,28 +104,18 @@ switch ($accion) {
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Marca</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="form-row">
-							<input required type="hidden" name="idUsuario" placeholder="idUsuario" id="idUsuario" value="<?php echo $idUsuario; ?>">
-							<input required type="email" name="correoUsuario" id="correoUsuario" placeholder="Correo" value="<?php echo $correoUsuario; ?>">
-							<input required type="password" name="passwordUsuario" id="passwordUsuario" placeholder="Contraseña" value="<?php echo $passwordUsuario; ?>">
-							<input type="file" accept="image/*" name="fotoUsuario" id="fotoUsuario" value="<?php echo $fotoUsuario; ?>">
-							<p style="color: #000"><strong>Tipo usuario</strong></p>
-							<select name="tipoUsuario" id="tipoUsuario" required>
-								<option name="tipoUsuario"><?php echo $tipoUsuario; ?></option>
-								<option name="tipoUsuario" id="tipoUsuario">Administrador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Conductor</option>
-								<option name="tipoUsuario" id="tipoUsuario">Relevador</option>
-								<option name="tipoUsuario" id="tipoUsuario">Calibrador</option>
-							</select>
-							<p style="color: #000;"><strong>Estado usuario</strong></p>
-							<select  name="estadoUsuario" id="estadoUsuario" required>
-								<option name="estadoUsuario"> <?php echo $estadoUsuario; ?></option>
-								<option name="estadoUsuario" id="estadoUsuario">Activo</option>
-								<option name="estadoUsuario" id="estadoUsuario">Inactivo</option>
+							<input required type="number" name="idMarca" placeholder="idMarca" id="idMarca" value="<?php echo $idMarca; ?>">
+							<input required type="text" name="nomMarca" id="nomMarca" placeholder="Nombre" value="<?php echo $nomMarca; ?>">
+							<p style="color: #000;"><strong>Estado Marca</strong></p>
+							<select  name="estadoMarca" id="estadoMarca" required>
+								<option name="estadoMarca"> <?php echo $estadoMarca; ?></option>
+								<option name="estadoMarca" id="estadoMarca">Activo</option>
+								<option name="estadoMarca" id="estadoMarca">Inactivo</option>
 							</select>
 
 						</div>
@@ -147,7 +131,7 @@ switch ($accion) {
 		</div>
 	</form>
 
-	<h2>Gestion Usuarios</h2>
+	<h2>Gestion Marcas</h2>
 	<!-- Button trigger modal -->
 	<button type="button" class="Agregar btn btn-primary" class="BotonAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
 		Agregar registro +
@@ -156,11 +140,8 @@ switch ($accion) {
 		<thead>
 			<!-- Titulos tabla -->
 			<tr>
-				<th>id Usuario</th>
-				<th>Correo</th>
-				<th>Password</th>
-				<th>Foto del usuario</th>
-				<th>Tipo de usuario</th>
+				<th>id Marca</th>
+				<th>Nombre</th>
 				<th>Estado</th>
 				<th class="thSeleccionar">Opciones</th>
 			</tr>
@@ -174,20 +155,14 @@ switch ($accion) {
 			foreach ($query as $columna) 
 				{?>
 					<tr>
-						<td><?php echo $columna['idUsuario'];?></td>
-						<td><?php echo $columna['correoUsuario'];?></td>
-						<td><?php echo $columna['passwordUsuario'];?></td>
-						<td><img class="img-thumbnail" width="100px" src="../../imgUsuarios/<?php echo $columna['fotoUsuario'];?>"></td>
-						<td><?php echo $columna['tipoUsuario'];?></td>
-						<td><?php echo $columna['estadoUsuario'];?></td>
+						<td><?php echo $columna['idMarca'];?></td>
+						<td><?php echo $columna['nomMarca'];?></td>
+						<td><?php echo $columna['estadoMarca'];?></td>
 						<td  class="tdSeleccionar">
 							<form action="" method="POST">
-								<input type="hidden" name="idUsuario" value="<?php echo $columna['idUsuario'];?>">
-								<input type="hidden" name="correoUsuario" value="<?php echo $columna['correoUsuario'];?>">
-								<input type="hidden" name="passwordUsuario" value="<?php echo $columna['passwordUsuario'];?>">
-								<input type="hidden" name="fotoUsuario" value="<?php echo $columna['fotoUsuario'];?>">
-								<input type="hidden" name="tipoUsuario" value="<?php echo $columna['tipoUsuario'];?>">
-								<input type="hidden" name="estadoUsuario" value="<?php echo $columna['estadoUsuario'];?>">
+								<input type="hidden" name="idMarca" value="<?php echo $columna['idMarca'];?>">
+								<input type="hidden" name="nomMarca" value="<?php echo $columna['nomMarca'];?>">
+								<input type="hidden" name="estadoMarca" value="<?php echo $columna['estadoMarca'];?>">
 								<button type="submit" name="Accion" class="btn btn-seleccionar" value="Seleccionar">Seleccionar</button>
 							</form>
 						</td>
