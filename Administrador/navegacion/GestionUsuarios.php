@@ -13,7 +13,7 @@ include '../../php/FuncConectar.php';
 
 // ----------------CODIGO PARA MOSTRAR DATOS EN LA TABLA
 $conexion = ConectarBD();
-$mostrarTabla = "SELECT * FROM Usuario";
+$mostrarTabla = "CALL Ver_Usuario";
 $query = mysqli_query($conexion, $mostrarTabla);
 $Array = mysqli_fetch_array($query);
 

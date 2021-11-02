@@ -31,7 +31,7 @@ $datos = mysqli_num_rows($resultado);
 					}
 					elseif ($datos>0 and $_SESSION['TipoUsuario'] == $Array[3]) {
 						header("Location:../Calibrador/navegacion/GestionRecorrido.php");
-					}
+					}	
 	else {
 	echo "<script>
 				alert('Usuario y/o contraseña incorrectos.');
