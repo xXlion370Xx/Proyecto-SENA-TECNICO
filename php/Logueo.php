@@ -24,13 +24,13 @@ $datos = mysqli_num_rows($resultado);
 		header("Location:../Administrador/navegacion/GestionUsuarios.php");
 			}
 			elseif ($datos>0 and $_SESSION['TipoUsuario'] == $Array[1]) {
-			header("Location:../Conductor/navegacion/inicio.html");
+			header("Location:../Conductor/navegacion/GestionVehiRecorrido.php");
 				}
 				elseif ($datos>0 and $_SESSION['TipoUsuario'] == $Array[2]) {
-					header("Location:../Relevador/navegacion/inicio.html");
+					header("Location:../Relevador/navegacion/GestionVehiRecorrido.php");
 					}
 					elseif ($datos>0 and $_SESSION['TipoUsuario'] == $Array[3]) {
-						header("Location:../Calibrador/navegacion/inicio.html");
+						header("Location:../Calibrador/navegacion/GestionRecorrido.php");
 					}
 	else {
 	echo "<script>

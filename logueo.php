@@ -29,7 +29,6 @@ if ($_SESSION['TipoUsuario'] == null) {
 		<input type="email" name="CorreoUsuario" placeholder="Escriba su correo" class="input1">
 		<input type="password" name="Contraseña" placeholder="Escriba su contraseña">
 		<input id="boton1" type="submit" value="Ingresar">
-		
 		<img src="img/autobus-escolar.png" class="BusEscolar">
 	</form>
 
